@@ -8,16 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    static let taskDateFormat: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        return formatter
-    }()
-    
-    var dueDate = Date()
     
     var body: some View {
-        Text("Hello: \(dueDate, formatter: Self.taskDateFormat)")
+        Text("Hello: World!")
             .padding()
     }
 }

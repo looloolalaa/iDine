@@ -7,25 +7,9 @@
 
 import SwiftUI
 
-struct PlayButton: View {
-    @Binding var isPlaying: Bool
-
-    var body: some View {
-        Button(isPlaying ? "Pause" : "Play") {
-            isPlaying.toggle()
-        }
-    }
-}
-
 struct test: View {
-    @State private var isPlaying: Bool = false
-
     var body: some View {
-        VStack {
-            Text("episode.title")
-                .foregroundStyle(isPlaying ? .primary : .secondary)
-            PlayButton(isPlaying: $isPlaying) // Pass a binding.
-        }
+        Text("Hello")
     }
 }
 

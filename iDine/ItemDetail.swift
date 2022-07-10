@@ -30,7 +30,12 @@ struct ItemDetail: View {
             Button("Order this") {
                 order.add(item: item)
             }
-            .font(.headline)
+            .padding()
+            .font(.title)
+            .background(.gray.opacity(0.1))
+            
+            .cornerRadius(15)
+            .border(.blue, width: 1)
             
             Spacer()
         }

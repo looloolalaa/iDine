@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ItemDetail: View {
     @EnvironmentObject var order: Order
+    @State private var showingOrderConfirm = false
     let item: MenuItem
     
     var body: some View {
@@ -27,20 +28,27 @@ struct ItemDetail: View {
             Text(item.description)
                 .padding()
             
-            Button("Order this") {
+            Button(action: {
                 order.add(item: item)
+                showingOrderConfirm.toggle()
+            }){
+                Text("Order this")
+                    .font(.title)
+                    .padding()
+                    .padding(.horizontal)
+                    .background(.gray.opacity(0.1))
+                    .overlay(RoundedRectangle(cornerRadius: 10)
+                        .stroke(.blue, lineWidth: 2))
             }
-            .padding()
-            .font(.title)
-            .background(.gray.opacity(0.1))
-            
-            .cornerRadius(15)
-            .border(.blue, width: 1)
+            .alert(isPresented: $showingOrderConfirm) {
+                Alert(title: Text("Menu Added!"))
+            }
             
             Spacer()
         }
         .navigationTitle(item.name)
         .navigationBarTitleDisplayMode(.inline)
+        
         
     }
 }

@@ -7,29 +7,30 @@
 
 import SwiftUI
 
+struct S: Hashable {
+    let id: Int
+    let name: String
+}
+
 struct test: View {
-    @State private var t0 = false
-    @State private var t1 = false
-    @State private var t2 = false
+    @State private var myitems: [S] = []
     
     var body: some View {
         VStack {
-            Button("0") {
-                t0.toggle()
+            ForEach(myitems, id: \.self) { item in
+                Button(item.name){
+                    withAnimation { () -> () in
+                        if let index = myitems.firstIndex(of: item) {
+                            myitems.remove(at: index)
+                        }
+                    }
+                }
             }
-            .alert(isPresented: $t0) {
-                Alert(title: Text("alert0"), dismissButton: .default(Text("Ok ..")) {
-                    t0 = true
-                })
-            }
-            
-            Button("1") {
-//                t1.toggle()
-            }
-            .alert(isPresented: $t1) {
-                Alert(title: Text("alert1"))
-            }
-            
+    
+            Button("Add") {
+                let number = myitems.count
+                myitems.append(S(id: number, name: "myname\(number)"))
+            }.padding()
         }
         
         

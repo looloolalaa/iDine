@@ -18,6 +18,10 @@ struct MainView: View {
                 .tabItem {
                     Label("Order", systemImage: "square.and.pencil")
                 }
+            BookmarkView()
+                .tabItem {
+                    Label("Bookmark", systemImage: "star.fill")
+                }
         }
     }
 }
@@ -26,5 +30,6 @@ struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
             .environmentObject(Order())
+            .environmentObject(Bookmark())
     }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ItemDetail: View {
     @EnvironmentObject var order: Order
+    @EnvironmentObject var bookmark: Bookmark
     @State private var showingOrderConfirm = false
     let item: MenuItem
     
@@ -48,6 +49,15 @@ struct ItemDetail: View {
         }
         .navigationTitle(item.name)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    bookmark.add(item: item)
+                }){
+                    Image(systemName: "star")
+                }
+            }
+        }
         
         
     }
@@ -58,6 +68,7 @@ struct ItemDetail_Previews: PreviewProvider {
         NavigationView {
             ItemDetail(item: MenuItem.example)
                 .environmentObject(Order())
+                .environmentObject(Bookmark())
         }
     }
 }

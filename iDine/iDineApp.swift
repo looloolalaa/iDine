@@ -10,11 +10,14 @@ import SwiftUI
 @main
 struct iDineApp: App {
     @StateObject var order = Order()
+    @StateObject var bookmark = Bookmark()
     
     var body: some Scene {
         WindowGroup {
             MainView()
                 .environmentObject(order)
+                .environmentObject(bookmark)
+            
         }
     }
 }

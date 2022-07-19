@@ -13,21 +13,22 @@ struct BookmarkView: View {
     var body: some View {
         VStack {
             Text("Bookmark")
-                .font(.title2)
+                .font(.title)
+                .fontWeight(.bold)
             
             List {
                 ForEach(bookmark.items) { item in
                     HStack {
                         ItemRow(item: item)
                         Button(action: {
-                            print("wow")
-                            //delete
+                            bookmark.remove(item: item)
                         }){
                             Image(systemName: "star.fill")
                                 .resizable()
                                 .frame(width: 25, height: 25)
                         }
                         .padding(.leading)
+                        .buttonStyle(.borderless)
                     }
                 }
                 .padding([.top, .leading, .bottom])

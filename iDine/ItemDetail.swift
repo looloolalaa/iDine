@@ -51,10 +51,18 @@ struct ItemDetail: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    bookmark.add(item: item)
-                }){
-                    Image(systemName: "star")
+                if bookmark.items.contains(item) {
+                    Button(action: {
+                        bookmark.remove(item: item)
+                    }){
+                        Image(systemName: "star.fill")
+                    }
+                } else {
+                    Button(action: {
+                        bookmark.add(item: item)
+                    }){
+                        Image(systemName: "star")
+                    }
                 }
             }
         }

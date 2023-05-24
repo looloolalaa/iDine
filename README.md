@@ -5,6 +5,9 @@
 #### 메뉴 옆의 알파벳은 restrictions를 나타냅니다.
 
 <img src="screenshots/0.png" width="50%">
+
+#### 메뉴를 터치하면 세부 사항을 볼 수 있습니다.
+
 <img src="screenshots/1.png" width="50%">
 
 #### 메뉴 탭에서 order this를 터치하면 주문이 완료되고 order 탭에서 확인할 수 있습니다.
